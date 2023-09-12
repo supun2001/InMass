@@ -6,6 +6,7 @@ require('./service/config/db')
 
 const app = express();
 
+app.use(express.json())
 app.use('/api', companyRoutes);
 
 const port = process.env.PORT;
