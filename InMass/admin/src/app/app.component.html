@@ -1,2 +1,4 @@
-
-<router-outlet></router-outlet>
+<app-login *ngIf="!hasToken"></app-login>
+<mat-drawer-container *ngIf="hasToken">
+    <app-slidebar></app-slidebar>
+</mat-drawer-container>

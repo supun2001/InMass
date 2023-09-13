@@ -10,17 +10,19 @@ export class LoginComponent {
   username:string='';
   password:string='';
   faild:boolean = false;
+  hide:boolean = false;
 
   constructor(private router:Router){}
 
   login(){
     if(this.username=="admin" && this.password=="admin"){
       localStorage.setItem('token',Math.random().toString());
-      this.router.navigate(['/dashboard'])
+      this.router.navigate(['/'])
     }else{
       this.faild=true;
       console.log("error")
     }
   }
 
+  
 }

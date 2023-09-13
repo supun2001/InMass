@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class DashboardComponent {
   constructor(private router:Router){}
 
+  
   logout(){
     const confirmation=confirm("Sure to logout?")
     if(confirmation){
