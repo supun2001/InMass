@@ -3,48 +3,30 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const router = express.Router();
 
-let refreshTokens = [];
+// Removed refresh token related code
+// let refreshTokens = [];
 
 const admin = [
     {
         username: process.env.ADMIN_USERNAME,
-        password: process.env.ADMIN_PASSWORD
+        password: process.env.ADMIN_PASSWORD,
     }
 ]
 
-router.get('/', (req, res) => {
+router.post('/', (req, res) => {
     // Verify the user
     const { username, password } = req.body;
-    const user = admin.find((admin) => admin.username === username && admin.password === password); // Corrected the condition
-
+    const user = admin.find((admin) => admin.username === username && admin.password === password);
     if (user) {
         // JWT token
         const adminUser = { name: "Welcome", password: "1234" }
-        const accessToken = jwt.sign(adminUser, process.env.SECRET_KEY, { expiresIn: '3h' })
-        // const refreshToken = jwt.sign(adminUser, process.env.REFRESH_TOKEN, { expiresIn: '24h' })
-        // refreshTokens.push(refreshToken)
-        // res.send({ accessToken, refreshToken }) // Corrected the property name
-        res.send({ accessToken })
+        const accessToken = jwt.sign(adminUser, process.env.SECRET_KEY, { expiresIn: '3h' });
+        res.status(200).send({ message: 'Login successful', accessToken });
     } else {
-        res.send("Username and password are wrong")
+        res.status(401).send("Username and password are wrong");
     }
 })
 
-// router.post('/token', (req, res) => {
-//     const refreshToken = req.body.refreshToken; // Corrected the variable name
-//     if (refreshToken == null) res.sendStatus(401)
-//     if (!refreshTokens.includes(refreshToken)) res.sendStatus(403)
-//     jwt.verify(refreshToken, process.env.REFRESH_TOKEN, (err, adminUser) => {
-//         if (err) res.sendStatus(403)
-//         const accessToken = jwt.sign({ username: adminUser.username, password: adminUser.password }, process.env.SECRET_KEY, { expiresIn: '10s' })
-//         res.send({ accessToken })
-//     })
-// })
-
-// router.delete('/logout', (req, res) => {
-//     const refreshToken = req.body.refreshToken; // Corrected the variable name
-//     refreshTokens = refreshTokens.filter(t => t !== refreshToken)
-//     res.sendStatus(204)
-// })
+// Removed token and logout routes
 
 module.exports = router;

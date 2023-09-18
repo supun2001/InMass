@@ -1,1 +1,31 @@
-<p>login works!</p>
+<div class="container col-sm-5">
+    <mat-card>
+        <mat-card-content>
+            <h2>Admin login</h2>
+            <div *ngIf="loginError" class="text-danger">
+                {{loginError}}
+            </div>
+            <br>
+            <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="Username" #Username="ngModel" [(ngModel)]="user.username" required
+                        class="form-control">
+                </div>
+                <div *ngIf="Username.errors && form.submitted" class="text-danger">
+                    Please enter a username
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="Password" #Password="ngModel" required class="form-control"
+                        id="password" [(ngModel)]="user.password">
+                </div>
+                <div *ngIf="Password.errors && form.submitted" class="text-danger">
+                    Please enter a password
+                </div>
+                <br>
+                <input type="submit" class="btn btn-primary" value="Login">
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
