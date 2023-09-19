@@ -1,1 +1,27 @@
-<p>dashboard works!</p>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">InMass</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/company" aria-current="page" href="#">Company</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" routerLink="/jobs" aria-current="page" href="#">Jobs</a>
+                </li>
+            </ul>
+        </div>
+        <div class="d-flex">
+            <button type="button" class="btn btn-danger">
+                <span class="material-symbols-outlined">
+                    logout
+                </span>
+            </button>
+
+        </div>
+    </div>
+</nav>
