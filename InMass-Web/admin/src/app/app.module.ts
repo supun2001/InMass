@@ -9,10 +9,12 @@ import { JobsComponent } from './component/jobs/jobs.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { LoginService } from './service/login.service';
 import { CompanyService } from './service/company.service';
 import {MatCardModule} from '@angular/material/card';
+import { AuthIntercepter } from './service/authIntercepter.service';
+import { ComCreateComponent } from './component/company/com-create/com-create.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import {MatCardModule} from '@angular/material/card';
     LoginComponent,
     CompanyComponent,
     JobsComponent,
-    DashboardComponent
+    DashboardComponent,
+    ComCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,11 @@ import {MatCardModule} from '@angular/material/card';
     ReactiveFormsModule,
     MatCardModule
   ],
-  providers: [LoginService,CompanyService],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:AuthIntercepter,
+    multi:true
+  },LoginService,CompanyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

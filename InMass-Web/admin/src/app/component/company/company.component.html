@@ -1,1 +1,41 @@
-<p>company works!</p>
+<app-dashboard></app-dashboard>
+<div class="container">
+    <div *ngIf="errorMzg" class="exp text-danger">
+        <h2>{{errorMzg}}</h2>
+    </div>
+    <div *ngIf="!errorMzg">
+        <app-com-create></app-com-create>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Logo</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Facebook</th>
+                    <th scope="col">HR Name</th>
+                    <th scope="col">HR Contact number</th>
+                    <th scope="col">HR Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let companyItem of companies; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ companyItem.c_name }}</td>
+                    <td>
+                        <img [src]="companyItem.c_logo ? (c_image + companyItem.c_logo) : ''" alt="">
+                    </td>
+                    <td>{{ companyItem.c_description }}</td>
+                    <td>{{ companyItem.c_address }}</td>
+                    <td>{{ companyItem.c_facebook }}</td>
+                    <td>{{ companyItem.c_linkedin }}</td>
+                    <td>{{ companyItem.hr_name }}</td>
+                    <td>{{ companyItem.hr_email }}</td>
+                    <td>{{ companyItem.hr_contact }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

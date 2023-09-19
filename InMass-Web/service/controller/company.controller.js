@@ -22,10 +22,10 @@ router.get('/', (req, res) => {
     // Fetch all companies
     company.find()
         .then(docs => {
-            res.status(200).json({ success: true, companies: docs });
+            res.status(200).send(docs)
         })
         .catch(err => {
-            res.status(500).json({ success: false, error: err.message });
+            res.status(500).send(err)
         });
 });
 

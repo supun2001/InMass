@@ -21,7 +21,7 @@ export class LoginComponent {
         (res) => {
           if (res.accessToken) {
             const token = localStorage.setItem('token', res.accessToken);
-            this.router.navigate(['dashboard']);
+            this.router.navigate(['company']);
           } else {
             // Set the error message
             // this.loginError = 'Login failed: ' + res.message;

@@ -1,0 +1,13 @@
+/* Add this CSS to your stylesheet */
+.navbar-nav {
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* This pushes items to the right */
+    width: 100%;
+    margin-right: 10px; /* Adjust the margin as needed for spacing */
+}
+
+.navbar-nav .nav-item:last-child {
+    margin-left: 10px; /* Add some spacing between the last item and the edge */
+}

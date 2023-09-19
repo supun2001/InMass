@@ -8,6 +8,7 @@ require('dotenv').config();
 require('./service/config/db')
 
 const app = express();
+app.use('/uploads/comLogos', express.static('uploads/comLogos'));
 app.use(cors())
 app.use(express.json())
 app.use('/admin', loginService)
