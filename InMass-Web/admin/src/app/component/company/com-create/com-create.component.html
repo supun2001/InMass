@@ -1,1 +1,110 @@
-<p>com-create works!</p>
+<h2>Create Company</h2>
+<form #form="ngForm" (ngSubmit)="SaveData(form)">
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label>Company name</label>
+                        <input type="text" name="Name" #Name="ngModel" [(ngModel)]="company.c_name" required
+                            class="form-control" id="">
+                        <div *ngIf="Name.errors && form.submitted" class="text-danger">
+                            Please enter a name
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label>LinkedIn profile URL</label>
+                        <input type="text" name="LinkedIn" #LinkedIn="ngModel" [(ngModel)]="company.c_linkedin" required
+                            class="form-control" id="">
+                        <div *ngIf="LinkedIn.errors && form.submitted" class="text-danger">
+                            Please enter a LinkedIn profile URL
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label>Company Description</label>
+                        <input type="text" name="Description" #Description="ngModel" [(ngModel)]="company.c_description"
+                            required class="form-control" id="">
+                        <div *ngIf="Description.errors && form.submitted" class="text-danger">
+                            Please enter a description
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label>HR manager name</label>
+                        <input type="text" name="HRName" #HRName="ngModel" [(ngModel)]="company.hr_name" required
+                            class="form-control" id="">
+                        <div *ngIf="HRName.errors && form.submitted" class="text-danger">
+                            Please enter a HR manager name
+                        </div>
+                    </div>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label>Company Address</label>
+                        <input type="text" name="Address" #Address="ngModel" [(ngModel)]="company.c_address" required
+                            class="form-control" id="">
+                        <div *ngIf="Address.errors && form.submitted" class="text-danger">
+                            Please enter a address
+                        </div>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="form-group">
+                        <label>HR manager contact number</label>
+                        <input type="text" name="HRNumber" #HRNumber="ngModel" [(ngModel)]="company.hr_contact" required
+                            class="form-control" id="">
+                        <div *ngIf="HRNumber.errors && form.submitted" class="text-danger">
+                            Please enter a HR manager phone number
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label>FaceBook profile URL</label>
+                        <input type="text" name="FaceBook" #FaceBook="ngModel" [(ngModel)]="company.c_facebook" required
+                            class="form-control" id="">
+                        <div *ngIf="FaceBook.errors && form.submitted" class="text-danger">
+                            Please copy the facebook url
+                        </div>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="form-group">
+                        <label>HR manager email</label>
+                        <input type="text" name="HREmail" #HREmail="ngModel" [(ngModel)]="company.hr_email" required
+                            class="form-control" id="">
+                        <div *ngIf="HREmail.errors && form.submitted" class="text-danger">
+                            Please enter a HR manager email
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-group">
+        <label>Company logo</label>
+        <input type="file" class="form-control" name="Logo" #Logo="ngModel" [(ngModel)]="company.c_logo" required id="">
+        <div *ngIf="Logo.errors && form.submitted" class="text-danger">
+            Please attach the logo
+        </div>
+    </div>
+    <br>
+    <input type="submit" class="btn btn-primary" value="Save">
+</form>
