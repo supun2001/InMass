@@ -12,9 +12,14 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { LoginService } from './service/login.service';
 import { CompanyService } from './service/company.service';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { AuthIntercepter } from './service/authIntercepter.service';
 import { ComCreateComponent } from './component/company/com-create/com-create.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -32,13 +37,22 @@ import { ComCreateComponent } from './component/company/com-create/com-create.co
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
-  providers: [{
-    provide:HTTP_INTERCEPTORS,
-    useClass:AuthIntercepter,
-    multi:true
-  },LoginService,CompanyService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthIntercepter,
+      multi: true
+    },
+    LoginService,
+    CompanyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
