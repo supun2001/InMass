@@ -46,27 +46,33 @@ export class CompanyService {
     );
   }
 
-updateCompany(company: Company, selectedFile: File): Observable<HttpResponse<any>> {
-  console.log('Company data:', company);
-const formData: FormData = new FormData();
-// Rest of your code to append data to formData
+  updateCompany(company: Company, selectedFile: File): Observable<HttpResponse<any>> {
+    console.log('Company data:', company);
+  const formData: FormData = new FormData();
+  // Rest of your code to append data to formData
 
-  formData.append('c_logo', selectedFile);
-  console.log('Selected file:', selectedFile);
+    formData.append('c_logo', selectedFile);
+    console.log('Selected file:', selectedFile);
 
-  formData.append('company', JSON.stringify(company));
-  console.log('Request data:', formData); // Add this line for debugging
-  console.log('Request headers:', this.header);
+    formData.append('company', JSON.stringify(company));
+    console.log('Request data:', formData); // Add this line for debugging
+    console.log('Request headers:', this.header);
 
 
-  return this.client.put(
-    env.secret_url + '/company/' + company._id,
-    formData,
-    {
-      observe: 'response',
-    }
-  );
-}
+    return this.client.put(
+      env.secret_url + '/company/' + company._id,
+      formData,
+      {
+        observe: 'response',
+      }
+    );
+  }
+
+  deleteUser(id:string):Observable<HttpResponse<any>>{
+    return this.client.delete<HttpResponse<any>>(env.secret_url+'/company/'+id,{
+      observe:'response'
+    })
+  }
 
   
 }

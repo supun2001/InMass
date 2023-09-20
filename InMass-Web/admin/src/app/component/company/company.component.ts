@@ -31,4 +31,21 @@ export class CompanyComponent implements OnInit {
       }
     );
   }
+
+  deleteUser(id:any){
+    if(confirm("Are you sure to delete?")){
+      this.companyService.deleteUser(id).subscribe(res=>{
+        if(res.status ==200){
+          for(let i=0;i<this.companies.length;i++){
+            if(id==this.companies[i]._id){
+              this.companies.splice(i,1);
+              break;
+            }
+          }
+        }
+      })
+    }
+  }
+
+
 }

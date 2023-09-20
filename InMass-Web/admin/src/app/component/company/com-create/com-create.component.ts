@@ -42,6 +42,8 @@ export class ComCreateComponent implements OnInit {
     });
   }
 
+  
+
   handleFileInput(event: any) {
     const fileList: FileList = event.target.files;
     if (fileList.length > 0) {
