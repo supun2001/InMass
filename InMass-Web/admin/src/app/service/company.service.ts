@@ -23,10 +23,50 @@ export class CompanyService {
     return this.client.get<Company>(env.secret_url + '/company/' + id); // Added a slash before id
   }
 
-  addCompany(company:Company):Observable<HttpResponse<any>>{
-    return this.client.post(env.secret_url+'/company',JSON.stringify(company),{
-      headers:this.header,observe:'response'
-    })
+  addCompany(user: Company, file: File): Observable<HttpResponse<any>> {
+    // Create a FormData object to send both user data and the file
+    const formData = new FormData();
+    formData.append('c_logo', file); // 'avatar' should match the field name expected on the server
+    formData.append('c_name', user.c_name);
+    formData.append('c_description', user.c_description);
+    formData.append('c_address', user.c_address);
+    formData.append('c_facebook', user.c_facebook);
+    formData.append('c_linkedin', user.c_linkedin);
+    formData.append('hr_name', user.hr_name);
+    formData.append('hr_email', user.hr_email);
+    formData.append('hr_contact', user.hr_contact);
+
+    console.log(user)
+    return this.client.post<HttpResponse<any>>(
+      env.secret_url + '/company',
+      formData, // Send the FormData object
+      {
+        observe: 'response',
+      }
+    );
   }
+
+updateCompany(company: Company, selectedFile: File): Observable<HttpResponse<any>> {
+  console.log('Company data:', company);
+const formData: FormData = new FormData();
+// Rest of your code to append data to formData
+
+  formData.append('c_logo', selectedFile);
+  console.log('Selected file:', selectedFile);
+
+  formData.append('company', JSON.stringify(company));
+  console.log('Request data:', formData); // Add this line for debugging
+  console.log('Request headers:', this.header);
+
+
+  return this.client.put(
+    env.secret_url + '/company/' + company._id,
+    formData,
+    {
+      observe: 'response',
+    }
+  );
+}
+
   
 }

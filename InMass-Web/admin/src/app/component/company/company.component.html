@@ -4,8 +4,8 @@
         <h2>{{errorMzg}}</h2>
     </div>
     <div *ngIf="!errorMzg">
-        <app-com-create></app-com-create>
-
+        <!-- <app-com-create></app-com-create> -->
+        <button class="btn btn-primary" routerLink="create">Create new company</button>
         <hr>
         <br>
         <h2>Company list</h2>
@@ -21,6 +21,7 @@
                     <th scope="col">HR Name</th>
                     <th scope="col">HR Contact number</th>
                     <th scope="col">HR Email</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,6 +38,11 @@
                     <td>{{ companyItem.hr_name }}</td>
                     <td>{{ companyItem.hr_email }}</td>
                     <td>{{ companyItem.hr_contact }}</td>
+                    <td>
+                        <a [routerLink]="['/company/edit',companyItem._id]" class="btn btn-success">Edit</a>
+                        &nbsp;
+                        <!-- <a href="javascript:void(0);" class="btn btn-danger" (click)="deleteUser(companyItem._id)">Delete</a> -->
+                    </td>
                 </tr>
             </tbody>
         </table>
