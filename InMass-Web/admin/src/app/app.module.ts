@@ -20,6 +20,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FooterComponent } from './component/footer/footer.component';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     JobsComponent,
     DashboardComponent,
     ComCreateComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDividerModule
   ],
   providers: [
     {

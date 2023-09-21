@@ -2,7 +2,7 @@
     margin-top: 20px;
 }
 img{
-    width: 150px;
+    width: 50px;
     padding: 5px;
 }
 .exp{
@@ -26,4 +26,26 @@ td, th {
 .wrap-text {
     max-width: 20ch; /* Set the maximum width to 20 characters */
     white-space: normal; /* Allow text to wrap */
+}
+
+.wrap-text-id {
+    max-width: 2ch; /* Set the maximum width to 20 characters */
+    white-space: normal; /* Allow text to wrap */
+}
+
+.wrap-text-url {
+    max-width: 6ch; /* Set the maximum width to 20 characters */
+    white-space: normal; /* Allow text to wrap */
+}
+.wrap-text-email {
+    max-width: 7ch; /* Set the maximum width to 20 characters */
+    white-space: normal; /* Allow text to wrap */
+}
+
+.wrap-text-name {
+    max-width: 6ch; /* Set the maximum width to 20 characters */
+    white-space: normal; /* Allow text to wrap */
+}
+.action{
+    padding: 10px;
 }

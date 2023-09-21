@@ -75,6 +75,7 @@ ngOnInit(): void {
           for (let i = 0; i < this.companies.length; i++) {
             if (id == this.companies[i]._id) {
               this.companies.splice(i, 1);
+              window.location.reload()
               break;
             }
           }
