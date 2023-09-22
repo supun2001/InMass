@@ -1,0 +1,51 @@
+.container{
+    margin-top: 20px;
+}
+img{
+    width: 50px;
+    padding: 5px;
+}
+.exp{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+.wrap-text {
+    max-width: 20ch; /* Set the maximum width to 20 characters */
+    white-space: normal; /* Allow text to wrap */
+}
+
+.wrap-text-id {
+    max-width: 2ch; /* Set the maximum width to 20 characters */
+    white-space: normal; /* Allow text to wrap */
+}
+
+.wrap-text-url {
+    max-width: 6ch; /* Set the maximum width to 20 characters */
+    white-space: normal; /* Allow text to wrap */
+}
+.wrap-text-email {
+    max-width: 7ch; /* Set the maximum width to 20 characters */
+    white-space: normal; /* Allow text to wrap */
+}
+
+.wrap-text-name {
+    max-width: 6ch; /* Set the maximum width to 20 characters */
+    white-space: normal; /* Allow text to wrap */
+}
+.action{
+    padding: 10px;
+}

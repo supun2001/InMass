@@ -1,35 +1,35 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Company } from 'src/app/model/company.model';
-import { CompanyService } from 'src/app/service/company.service';
+import { Job } from 'src/app/model/jobs.model';
+import { JobService } from 'src/app/service/job.service';
 
 @Component({
-  selector: 'app-com-create',
-  templateUrl: './com-create.component.html',
-  styleUrls: ['./com-create.component.css']
+  selector: 'app-jobs-create',
+  templateUrl: './jobs-create.component.html',
+  styleUrls: ['./jobs-create.component.css']
 })
-export class ComCreateComponent implements OnInit {
-  company: Company = new Company();
+export class JobsCreateComponent implements OnInit{
+
+  job: Job = new Job();
   selectedFile: File | undefined;
   error: string | undefined;
 
   constructor(
-    private companyService: CompanyService,
+    private jobService: JobService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ){}
 
-  ngOnInit(): void {
+    ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const id = params['id'];
       if (id !== undefined) {
-        this.companyService.getCompany(id).subscribe(
+        this.jobService.getJob(id).subscribe(
           (res: any) => {
             if (res.success) {
               console.log(res);
-              this.company = res.company;
+              this.job = res.job;
             } else {
               console.error(res.message);
             }
@@ -53,17 +53,17 @@ export class ComCreateComponent implements OnInit {
 
   SaveData(form: NgForm) {
     if (form.valid) {
-      if (this.company._id !== undefined) {
+      if (this.job._id !== undefined) {
         // Update an existing company
         if (this.selectedFile !== undefined) { // Check if selectedFile is defined
-          this.companyService.updateCompany(this.company, this.selectedFile).subscribe(
+          this.jobService.updateJob(this.job, this.selectedFile).subscribe(
             (res) => {
               if (res.status === 200) {
-                this.router.navigate(['/company']);
+                this.router.navigate(['/jobs']);
               }
             },
             (error) => {
-              this.error = 'Error updating company: ' + error.message;
+              this.error = 'Error updating job: ' + error.message;
             }
           );
         } else {
@@ -73,10 +73,10 @@ export class ComCreateComponent implements OnInit {
       } else {
         // Create a new company
         if (this.selectedFile !== undefined) { // Check if selectedFile is defined
-          this.companyService.addCompany(this.company, this.selectedFile).subscribe(
+          this.jobService.addJob(this.job, this.selectedFile).subscribe(
             (res) => {
               if (res.status === 201) {
-                this.router.navigate(['/company']);
+                this.router.navigate(['/jobs']);
               }
             },
             (error) => {
@@ -90,4 +90,5 @@ export class ComCreateComponent implements OnInit {
       }
     }
   }
+
 }

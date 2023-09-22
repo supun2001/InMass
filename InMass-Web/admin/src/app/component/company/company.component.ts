@@ -16,7 +16,6 @@ export class CompanyComponent implements OnInit, AfterViewInit {
   c_image: string = '';
   errorMzg: string = '';
   displayColumns: string[] = ['_id', 'c_name', 'c_logo', 'c_description', 'c_address', 'c_facebook', 'c_linkedin', 'hr_name', 'hr_email', 'hr_contact', 'action'];
-  // public dataSource: any = [];
   dataSource:MatTableDataSource<Company>
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -48,7 +47,7 @@ ngOnInit(): void {
     (res: Company[]) => {
       this.c_image = env.imag_url;
       this.companies = res;
-      console.table(this.companies);
+      // console.table(this.companies);
       
       // Initialize the MatTableDataSource with the companies data
       this.dataSource = new MatTableDataSource(this.companies);

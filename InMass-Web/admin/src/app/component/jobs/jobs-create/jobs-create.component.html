@@ -1,0 +1,93 @@
+<app-dashboard></app-dashboard>
+<div class="container">
+    <h2 [hidden]="!(job._id==undefined)">Create Job</h2>
+    <h2 [hidden]="!(job._id!=undefined)">Edit Job</h2>
+    <form #form="ngForm" (ngSubmit)="SaveData(form)">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label>Company name</label>
+                            <input type="text" name="Name" #Name="ngModel" [(ngModel)]="job.j_title" required
+                                class="form-control" id="">
+                            <div *ngIf="Name.errors && form.submitted" class="text-danger">
+                                Please enter a name
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label>Job Description</label>
+                            <input type="text" name="Description" #Description="ngModel" [(ngModel)]="job.j_des"
+                                required class="form-control" id="">
+                            <div *ngIf="Description.errors && form.submitted" class="text-danger">
+                                Please enter a LinkedIn profile URL
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label>Posting job company</label>
+                            <input type="text" name="Company" #Company="ngModel" [(ngModel)]="job.j_company" required
+                                class="form-control" id="">
+                            <div *ngIf="Company.errors && form.submitted" class="text-danger">
+                                Please enter a who post the job
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label>Job location</label>
+                            <input type="text" name="location" #location="ngModel" [(ngModel)]="job.j_location" required
+                                class="form-control" id="">
+                            <div *ngIf="location.errors && form.submitted" class="text-danger">
+                                Please enter a job location
+                            </div>
+                        </div>
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label>Job requirement</label>
+                            <input type="text" name="Requirement" #Requirement="ngModel" [(ngModel)]="job.j_requirement"
+                                required class="form-control" id="">
+                            <div *ngIf="Requirement.errors && form.submitted" class="text-danger">
+                                Please enter a address
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="form-group">
+                            <label>Job keywords</label>
+                            <input type="text" name="Keywords" #Keywords="ngModel" [(ngModel)]="job.j_keywords" required
+                                class="form-control" id="">
+                            <div *ngIf="Keywords.errors && form.submitted" class="text-danger">
+                                Please enter a job keywords
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+        <div class="form-group">
+            <label>Job post</label>
+            <!-- <input type="text" class="form-control" name="Logo" #Logo="ngModel" [(ngModel)]="company.c_logo" required id=""> -->
+            <input type="file" class="form-control" (change)="handleFileInput($event)" name="Post" #Post="ngModel"
+                [(ngModel)]="job.j_post" required id="">
+            <div *ngIf="Post.errors && form.submitted" class="text-danger">
+                Please attach the post
+            </div>
+        </div>
+        <br>
+        <input type="submit" class="btn btn-primary" value="Save">
+    </form>
+</div>

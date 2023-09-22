@@ -22,6 +22,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FooterComponent } from './component/footer/footer.component';
 import {MatDividerModule} from '@angular/material/divider';
+import { JobsCreateComponent } from './component/jobs/jobs-create/jobs-create.component';
+import { JobService } from './service/job.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import {MatDividerModule} from '@angular/material/divider';
     DashboardComponent,
     ComCreateComponent,
     FooterComponent,
+    JobsCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import {MatDividerModule} from '@angular/material/divider';
       multi: true
     },
     LoginService,
-    CompanyService
+    CompanyService,
+    JobService
   ],
   bootstrap: [AppComponent]
 })
